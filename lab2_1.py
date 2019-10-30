@@ -104,6 +104,35 @@ def R2forq23(k, x, alpha, prob, q):
     
     return 1 - R
 
+def test():
+    delta = 0.0000001
+    k = 2
+    x = 3
+    a = 0
+    prob = makeProbabilities(k, x)
+    prob[0][0] = 0.1
+    prob[0][1] = 0.3
+    prob[0][2] = 0.4
+    prob[1][0] = 0.9
+    prob[1][1] = 0.7
+    prob[1][2] = 0.6
+
+    assert (R1forq1(k, x, prob) > 4./15. - delta), 'Not passed'
+    assert (R1forq23(k, x, alpha, prob, q2) > 4./15. - delta), 'Not passed'
+    assert (R1forq23(k, x, a, prob, q3) > 4./15. - delta), 'Not passed'
+    assert (R2forq1(k, x, prob) > 11./15. - delta), 'Not passed'
+    assert (R2forq23(k, x, alpha, prob, q2) > 4./15. - delta), 'Not passed'
+    assert (R2forq23(k, x, a, prob, q3) > 4./15. - delta), 'Not passed'
+
+    assert (R1forq1(k, x, prob) < 4./15. + delta), 'Not passed'
+    assert (R1forq23(k, x, alpha, prob, q2) < 4./15. + delta), 'Not passed'
+    assert (R1forq23(k, x, a, prob, q3) < 4./15. + delta), 'Not passed'
+    assert (R2forq1(k, x, prob) < 11./15. + delta), 'Not passed'
+    assert (R2forq23(k, x, alpha, prob, q2) < 4./15. + delta), 'Not passed'
+    assert (R2forq23(k, x, a, prob, q3) < 4./15. + delta), 'Not passed'
+
+    print("Test passed")
+
 # Main part
 k = 25
 x = 100
@@ -120,5 +149,6 @@ print('R2(q1) = {}'.format(R2forq1(k, x, prob)))
 print('R2(q2) = {}'.format(R2forq23(k, x, alpha, prob, q2)))
 for a in alpha:
     print('R2(q3, alpha = {}) = {}'.format(a, R2forq23(k, x, a, prob, q3))) 
-    
 
+print('TEST')
+test()
