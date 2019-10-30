@@ -130,6 +130,9 @@ for i in range(amountOfTests):
     timeConsumed[0][1][i] = fullTimeAlgorithm
     sumAlg = sumAlgArray[r] - sumAlgArray[l - 1]
 
+    assert (sumAlg == sumEasy), 'Not passed'
+    print("Test passed")
+
     print("Easy sum =      {}".format(sumEasy))
     print("Time consumed = {}".format(fullTimeEasy))
     print("Algorithm sum = {}".format(sumAlg))
@@ -164,6 +167,9 @@ for i in range(amountOfTests):
     sumAlg -= (0 if (l[1]==0) else sumAlgArray[r[0]][l[1]-1])
     sumAlg += (0 if (l[0]==0) else (0 if (l[1]==0) else sumAlgArray[l[0]-1][l[1]-1]))
 
+    assert (sumAlg == sumEasy), 'Not passed'
+    print("Test passed")
+    
     print("Easy sum =      {}".format(sumEasy))
     print("Time consumed = {}".format(fullTimeEasy))
     print("Algorithm sum = {}".format(sumAlg))
@@ -202,6 +208,9 @@ for i in range(amountOfTests):
     sumAlg += (0 if (l[1]==0) else (0 if (l[2]==0) else sumAlgArray[r[0]][l[1]-1][l[2]-1]))
     sumAlg -= (0 if (l[0]==0) else (0 if (l[1]==0) else ( 0 if (l[2]==0) else sumAlgArray[l[0]-1][l[1]-1][l[2]-1])))
 
+    assert (sumAlg == sumEasy), 'Not passed'
+    print("Test passed")
+
     print("Easy sum =      {}".format(sumEasy))
     print("Time consumed = {}".format(fullTimeEasy))
     print("Algorithm sum = {}".format(sumAlg))
@@ -211,11 +220,3 @@ for i in range(3):
     plt.plot(amount[i], timeConsumed[i][0])
     plt.plot(amount[i], timeConsumed[i][1])
     plt.show()
-
-
-
-
-
-
-
-
